@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASTRA-LINK — Adaptive Spacetime Transmission & Relayed Architecture</title>
+  <meta name="description" content="Professional interactive 3D aerospace simulation prototype exploring conceptual spacetime communication architecture between Earth and Mars.">
+  <meta name="theme-color" content="#030712">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2306b6d4'/><path d='M30 50h40M50 30v40' stroke='white' stroke-width='8'/></svg>">
+
+  <!-- Core Theme & Layout Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/space-scene.css">
+
+  <!-- Self-Contained Local Vendor Libraries (Offline Resilient) -->
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/OrbitControls.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Main Application Entry Module -->
+  <script type="module">
+    import { App } from './js/app.js';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const rootElement = document.getElementById('root');
+      if (window.ReactDOM && window.ReactDOM.createRoot) {
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(React.createElement(App));
+      } else {
+        console.error('ReactDOM failed to load.');
+      }
+    });
+  </script>
+</body>
+</html>

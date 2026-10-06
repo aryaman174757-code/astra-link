@@ -1,0 +1,163 @@
+/**
+ * ASTRA-LINK — 3D Space Scene & Viewport HUD Styles
+ */
+
+.space-scene-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, #060b1e 0%, #02040a 100%);
+  overflow: hidden;
+}
+
+#astra-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#astra-canvas:active {
+  cursor: grabbing;
+}
+
+/* Floating Camera & Scene Controls */
+.scene-hud-top-left {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scene-hud-top-right {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.camera-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  background: rgba(7, 12, 27, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.camera-preset-btn {
+  padding: 0.3rem 0.6rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.camera-preset-btn:hover {
+  color: var(--text-primary);
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--cyan-border);
+}
+
+.camera-preset-btn.active {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: var(--cyan-neon);
+  color: var(--cyan-400);
+}
+
+/* Viewport Guidance Hint */
+.scene-hud-bottom {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.3rem 0.85rem;
+  background: rgba(7, 12, 27, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Dynamic 3D Object Pinned Labels */
+.planet-hud-label {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 15;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.planet-hud-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(7, 12, 27, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-fast);
+}
+
+.planet-hud-label.earth .planet-hud-tag {
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+.planet-hud-label.earth:hover .planet-hud-tag {
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  transform: scale(1.05);
+}
+
+.planet-hud-label.mars .planet-hud-tag {
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #fb923c;
+}
+
+.planet-hud-label.mars:hover .planet-hud-tag {
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+  transform: scale(1.05);
+}
+
+/* Screen FX Overlays (Fault/Transmitting) */
+.scene-warning-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 50px rgba(239, 68, 68, 0.35);
+  animation: warning-flicker 1.5s infinite alternate;
+  z-index: 5;
+}
+
+@keyframes warning-flicker {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
